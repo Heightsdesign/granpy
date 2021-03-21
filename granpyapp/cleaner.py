@@ -19,7 +19,7 @@ class Cleaner:
 
         return self.question
 
-    def worldlist(self):
+    def wordlist(self):
 
         wordlist = nlp(self.lowercase())
 
@@ -28,7 +28,7 @@ class Cleaner:
     def stopword(self):
 
         clean_words = []
-        for token in self.worldlist():
+        for token in self.wordlist():
             if token not in stopWords:
                 clean_words.append(token)
 
@@ -37,6 +37,7 @@ class Cleaner:
 
 testclnr = Cleaner("Granpy quelle est l'adresse de la poste?")
 print(testclnr.stopword())
+
 
 
 

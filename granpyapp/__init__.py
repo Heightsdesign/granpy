@@ -1,2 +1,2 @@
-from flask import Flask
+from .cleaner import Cleaner
 from .views import app
