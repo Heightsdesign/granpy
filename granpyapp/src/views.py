@@ -1,6 +1,6 @@
-from flask import Flask
-
-app = Flask(__name__)
+from src import app
+from src.cleaner import Cleaner
+from src.geocode import Geocoder
 
 @app.route('/')
 def index():
