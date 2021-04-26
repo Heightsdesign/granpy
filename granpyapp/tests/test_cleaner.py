@@ -2,33 +2,40 @@ from src.cleaner import Cleaner
 
 # - Cleaner :
 
-    # - Retrieve question attribute from Cleaner object
+    """ Retrieve question attribute from Cleaner object """
 
 def test_get_question():
-    testclnr1 = Cleaner("Granpy quelle est l'adresse de la Poste?")
-    assert testclnr1.question == "Granpy quelle est l'adresse de la Poste?"
+    sut = Cleaner("Granpy quelle est l'adresse de la Poste?")
+    assert sut.question == "Granpy quelle est l'adresse de la Poste?"
 
-    # - Turn question into all lowercases with lowercase method
-    # - 'Poste' should be in all lowercase
+    """ Turn question into all lowercases with lowercase method
+        'Poste' should be in all lowercase """
     
 def test_turn_lowercase():
-    testclnr1 = Cleaner("Granpy quelle est l'adresse de la Poste?")
-    assert testclnr1.stopword() == ['poste']
+    sut = Cleaner("Granpy quelle est l'adresse de la POSTE?")
+    assert sut.make_final_string() == "poste"
     
-    # - Turn question (string) in a world list with wordlist method
+    """ Turn question (string) in a world list with wordlist method
+    this method should seperate the words contained in the input string """
 
 def test_turn_string_to_wordlist():
-    testclnr2 = Cleaner("Granpy quelle est l'adresse de la Tour Eiffel?")
-    assert testclnr2.stopword() == ['tour', 'eiffel']
+    sut = Cleaner("Granpy quelle est l'adresse de la Tour Eiffel?")
+    assert sut.make_final_string() == "tour+eiffel"
 
-    # - Clean worldlist from unwanted commun words with stopword method
+    """ Clean worldlist from unwanted commun words with stopword method """
     
 def test_token():
-    testclnr1 = Cleaner("Granpy quelle est l'adresse de la Poste?")
-    assert testclnr1.stopword() == ['poste']
+    sut = Cleaner("Granpy quelle est l'adresse de la Poste?")
+    assert sut.make_final_string() == "poste"
     
-    # - Retreive wordlist cleaned from stopword method
+    """ Takes words from wordlist and adds a + in between """
 
-def test_get_token():
-    testclnr1 = Cleaner("Granpy quelle est l'adresse de la Poste?")
-    print(testclnr1.stopword()[0])
+def test_concatenate():
+    sut = Cleaner("Granpy quelle est l'adresse de la Tour Eiffel?")
+    assert sut.make_final_string() == "tour+eiffel"
+
+    """ Returns the final string """
+
+def test_final_string():
+    sut = Cleaner("Granpy quelle est l'adresse de la Tour Eiffel?")
+    assert sut.make_final_string() == "tour+eiffel"
