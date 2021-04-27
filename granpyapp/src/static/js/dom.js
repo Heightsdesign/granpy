@@ -1,19 +1,7 @@
-//var input = document.querySelector('input[type="text"]');
-//var submitbtn = document.querySelector('input[type="submit"]');
-
-//submitbtn.addEventListener('click', function(){
-
-    //console.log(input.value);
-    
-//});
 
 function submit_entry(){
 
     var question = document.querySelector('input[type="text"]');
-
-    //var entry = {
-        //input: question.value
-    //};
 
     fetch(`${window.origin}/question/`, {
         method: "POST",
@@ -24,6 +12,18 @@ function submit_entry(){
             "content-type" : "application/json"
         })
     })
+
+    .then( function (response){
+        if(response.status !== 200){
+            console.log(response.warningMessage)
+        }
+
+        response.json().then(function (data){
+
+            console.log(data)
+        })
+    })
+
 
     console.log(question.value);
 };

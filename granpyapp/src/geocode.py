@@ -52,7 +52,7 @@ class Geocoder():
 
 #tcl = "openclassrooms"
 #bad_token = "grettfvd"
-#geocoder = Geocoder(tcl)
+#geocoder = Geocoder(bad_token)
 #print(geocoder.get_location())
 
 

@@ -56,7 +56,7 @@ class Cleaner:
         return self.final_string[:-1]
        
 
-#testclnr = Cleaner("Granpy quelle est l'adresse de la Tour Eiffel?")
+#testclnr = Cleaner("fefefenfk")
 #print(testclnr.make_final_string())
 
 

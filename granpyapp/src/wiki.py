@@ -17,12 +17,27 @@ class WikiSearcher:
     def __set_language(self):
         return wikipedia.set_lang("fr")
 
-    def geolookup(self):
+    def set_lookup(self):
         
         self.__set_language()
         self.lookup = wikipedia.geosearch(self.data[1][0], self.data[1][1], results=5, radius=1000)
+
+        return self.lookup
+
+    def geolookup(self):
+        
+        self.set_lookup()
+
         result = wikipedia.summary(self.lookup[0], sentences=2)
         return result
 
+    def get_url(self):
+
+        self.set_lookup()
+        
+        url = wikipedia.page(self.lookup[0]).url
+        return url
+
 #wikisearch = WikiSearcher(geocode_mock_data2)
 #print(wikisearch.geolookup())
+#print(wikisearch.get_url())
