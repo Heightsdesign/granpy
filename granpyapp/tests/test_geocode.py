@@ -1,7 +1,6 @@
 """ This file tests the geocode file"""
 import pytest
 from src.geocode import Geocoder
-from src.geocode import geocoder
 import requests
 import json
 

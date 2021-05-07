@@ -36,23 +36,27 @@ class Geocoder():
 
         data = self.__make_req()
 
-        if data['results'] == []:
-            self.status = "NOK"
-        
-        else:
+        try:
+            if data['results'] == []:
+                self.status = "NOK"
+            
+            else:
 
-            self.status = "OK"
-            #gets lattitude and longitude from json obj
-            #zips lattitude and longitude in a list
-            lattitude = data['results'][0]['geometry']['location']['lat']
-            longitude = data['results'][0]['geometry']['location']['lng']
-            self.location = [lattitude, longitude]
+                self.status = "OK"
+                #gets lattitude and longitude from json obj
+                #zips lattitude and longitude in a list
+                lattitude = data['results'][0]['geometry']['location']['lat']
+                longitude = data['results'][0]['geometry']['location']['lng']
+                self.location = [lattitude, longitude]
+        
+        except IndexError:
+            self.status = "NOK"
 
         return self.status, self.location
 
-#tcl = "openclassrooms"
+#tcl = "pont du gard"
 #bad_token = "grettfvd"
-#geocoder = Geocoder(bad_token)
+#geocoder = Geocoder(tcl)
 #print(geocoder.get_location())
 
 

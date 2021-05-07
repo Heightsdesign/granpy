@@ -2,7 +2,7 @@ from src.cleaner import Cleaner
 
 # - Cleaner :
 
-    """ Retrieve question attribute from Cleaner object """
+""" Retrieve question attribute from Cleaner object """
 
 def test_get_question():
     sut = Cleaner("Granpy quelle est l'adresse de la Poste?")

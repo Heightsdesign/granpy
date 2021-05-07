@@ -1,13 +1,86 @@
+<!DOCTYPE html>
 <html>
     <head>
-        Home Page
+        <meta charset="utf-8" />
+        <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+        
+        <title>Granpy - Home Page</title>
+        <link rel="shortcut icon" type="image/png" href="/static/img/favicon.png"/>
+
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+
+        <link
+        rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+        crossorigin="anonymous"
+        />
+        <link rel="stylesheet" href="/static/css/style.css"/>
+
     </head>
 
     <body>
-        <h1>Data Entry Form</h1>
-        <input id="questionForm" type="text" placeholder="Enter your question"/>
-        <button id="submitBtn" onclick="submit_entry();">Envoyer votre question</button>
-        <script src="/static/js/dom.js"></script>
+        
+        <div class="container-fluid">
+            <div class="row" id="headrow">
+                <div class="col-1 col-md-2 col-lg-2">
+                </div>
+                <div class="col-5 col-md-4 col-lg-3">
+                    <div class="header">
+                        <img 
+                        src="/static/img/banner_logo.png" 
+                        width = "200"
+                        height = "80"
+                        alt="logo"/>
+                    </div>
+                </div>
+                <div class="col-6 col-md-6 col-lg-7">
+                    <div id="head-text">BIENVENUE SUR LE SITE DU PAPY ROBOT !</div>
+                </div>
+            </div>
+        </div>
+        <div class="chat_window">
+            <div class="top_menu">
+                <div class="buttons">
+                    <div class="button close"></div>
+                    <div class="button minimize"></div>
+                    <div class="button maximize"></div>
+                </div>
+                <div class="title">Chat</div>
+            </div>
+            <ul class="messages"></ul>
+            <div class="bottom_wrapper clearfix">
+                <div class="message_input_wrapper">
+                    <input class="message_input" type="text" placeholder="Posez-moi une question m'voyez !"/>
+                </div>
+                <div class="send_message">
+                    <div class="icon"></div>
+                    <div class="text">Send</div>
+                </div>
+            </div>
+        </div>
+        <div class="message_template">
+            <li class="message">
+                <div class="avatar"></div>
+                <div class="text_wrapper">
+                    <div class="text"></div>
+                </div> 
+                <div id='map' class="map"></div>
+            </li>
+        </div>
 
-    </body>
+        <script src="/static/js/dom.js"></script>
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIxX5J017B85kHREmxUrG6blTmkeJFV2c"></script>
+        <script src="/static/js/chatbox.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        
+        
+        
+  </body>
 </html>
