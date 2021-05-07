@@ -29,12 +29,12 @@ class WikiSearcher:
         self.__set_lookup()
 
         try:
-            result = wikipedia.summary(self.lookup[0], sentences=2)
+            self.result = wikipedia.summary(self.lookup[0], sentences=2)
 
         except wikipedia.exceptions.PageError:
-            result = wikipedia.summary(self.lookup[1], sentences=2)
+            self.result = wikipedia.summary(self.lookup[1], sentences=2)
 
-        return result
+        return self.result
 
     def get_url(self):
 
@@ -48,6 +48,6 @@ class WikiSearcher:
 
         return url
 
-#wikisearch = WikiSearcher(geocode_mock_data3)
-#print(wikisearch.geolookup())
-#print(wikisearch.get_url())
+wikisearch = WikiSearcher(geocode_mock_data2)
+print(wikisearch.geolookup())
+print(wikisearch.get_url())
