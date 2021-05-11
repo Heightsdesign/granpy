@@ -30,7 +30,7 @@ Spécifications Techniques
 		- geocode.py : self.api_key = 'YOUR_API_KEY'
 		- index.html : <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY">
 		
-	Des requêtes sont également faites via l'API wikipédia
+	Des requêtes sont également faites via l'API wikipédia.
 
 
 

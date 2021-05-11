@@ -1,5 +1,4 @@
 
-
 (function() {
     var Message;
     Message = function (arg) {
@@ -67,23 +66,33 @@
                         if (data['status'] === 'OK'){
 
                             var granpy_res = data['granpyMessage'] + data['wikiresult'];
+
                             sendMessage(granpy_res, 'left');
+
                             var url_str = 'Pour en savoir plus : ' + JSON.stringify(data['wikiurl']);
 
-                                initMap = function(latitude, longitude) {
+                            var newdiv = document.createElement('div');   
+                            var message_template = document.getElementsByClassName('message_template')[0];
+                            newdiv.setAttribute("id", "map");   
 
-                                    document.getElementById("map").style.height = '300px';
-                                    document.getElementById("map").style.width = '100%';
+                            //message_template.insertBefore(newdiv,message_template.lastChild) //OR insert it
 
-                                    latitude = data['lat'];
-                                    longitude = data['long'];
-                                    var options = {
-                                        center: { lat: latitude, lng:longitude },
-                                        zoom: 17
-                                    };
-                                    var map = new google.maps.Map(document.getElementById("map"), options);
-                                    var marker = new google.maps.Marker({position:{lat: latitude, lng: longitude}, map:map});
+                            initMap = function(latitude, longitude) {
+
+                                document.getElementById("map").style.height = '300px';
+                                document.getElementById("map").style.width = '100%';
+
+                                latitude = data['lat'];
+                                longitude = data['long'];
+                                var options = {
+                                    center: { lat: latitude, lng:longitude },
+                                    zoom: 17
                                 };
+                                var map = new google.maps.Map(document.getElementById("map"), options);
+                                var marker = new google.maps.Marker({position:{lat: latitude, lng: longitude}, map:map});
+                            };
+
+                            message_template.appendChild(newdiv);
 
                             sendMessage(url_str, 'left');
                             initMap();

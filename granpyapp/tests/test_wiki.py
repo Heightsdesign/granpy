@@ -3,15 +3,14 @@ import wikipedia
 from src.wiki import WikiSearcher
 from unittest.mock import Mock, MagicMock
 
-def test_wiki_return(monkeypatch):
+def test_wiki_geolookup(monkeypatch):
 
     token = ('OK', [48.8975156, 2.3833993])
     sut = WikiSearcher(token)
 
-    class MockResponse(object):
+    class MockResponseGeosearch(object):
 
         def geosearch():
-
             georesponse = [
                 'Quai de la Gironde',
                 'Parc du Pont de Flandre',
@@ -19,7 +18,6 @@ def test_wiki_return(monkeypatch):
                 'Avenue Corentin-Cariou',
                 'Porte de la Villette (métro de Paris)'
                 ]
-
             return georesponse
 
         def summary():
@@ -30,14 +28,8 @@ def test_wiki_return(monkeypatch):
                         "== Situation et accès ==" \
                         "Il fait face au quai de la Charente, " \
                         "commence au quai de l'Oise" \
-                        " et se termine avenue Corentin-Cariou."
-
+                        " et se termine avenue Corentin-Cariou." 
             return sumresponse
-
-        def url():
-
-            urlresponse = "https://fr.wikipedia.org/wiki/Quai_de_la_Gironde"
-            return urlresponse
 
         
         def results(self):
@@ -49,15 +41,14 @@ def test_wiki_return(monkeypatch):
                                 "Il fait face au quai de la Charente, " \
                                 "commence au quai de l'Oise" \
                                 " et se termine avenue Corentin-Cariou."
-
             return result_wiki_sentence
 
-
     def mock_get(*url, **args):
-        return MockResponse().results()
+        return MockResponseGeosearch().results()
     
     monkeypatch.setattr(wikipedia, 'geosearch', mock_get)
     monkeypatch.setattr(wikipedia, 'summary', mock_get)
+
     assert sut.geolookup() == "Le quai de la Gironde est un quai situé" \
                                 " le long du canal Saint-Denis, " \
                                 "à Paris, dans le 19e arrondissement." \
@@ -65,5 +56,53 @@ def test_wiki_return(monkeypatch):
                                 "Il fait face au quai de la Charente, " \
                                 "commence au quai de l'Oise" \
                                 " et se termine avenue Corentin-Cariou."
+
+def test_wiki_get_url(monkeypatch):
+
+    token = ('OK', [48.8975156, 2.3833993])
+    sut = WikiSearcher(token)
+
+    class MockResponseUrl(object):
+
+        def __inti__(self):
+
+            self.url = "https://fr.wikipedia.org/wiki/Quai_de_la_Gironde"
+
+        def geosearch():
+
+            georesponse = [
+                'Quai de la Gironde',
+                'Parc du Pont de Flandre',
+                'Square du Quai-de-la-Gironde',
+                'Avenue Corentin-Cariou',
+                'Porte de la Villette (métro de Paris)'
+                ]
+            return georesponse
+
+        """
+        def page():
+
+            page_response = "<WikipediaPage 'Quai de la Gironde'>"
+            return page_response
+        """
+
+        def url():
+
+            urlresponse = "https://fr.wikipedia.org/wiki/Quai_de_la_Gironde"
+            return urlresponse
+
+        def results(self):
+
+            result_wiki_url ="https://fr.wikipedia.org/wiki/Quai_de_la_Gironde"
+            return result_wiki_url
+
+    def mock_get(*url):
+        return MockResponseUrl()
+
+    monkeypatch.setattr(wikipedia, 'geosearch', mock_get)
+    monkeypatch.setattr(wikipedia.wikipedia.page, 'url', mock_get)
+
+    assert sut.get_url() == "https://fr.wikipedia.org/wiki/Quai_de_la_Gironde"
+
 
 

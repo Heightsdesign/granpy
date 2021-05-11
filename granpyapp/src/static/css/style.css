@@ -13,9 +13,28 @@
     color: rgb(252, 250, 248);
 }
 
-* {
-    box-sizing: border-box;
+#footerrow{
+  height : 100px;
+  background-color:#130330;
 }
+
+#footer-text {
+  margin: auto;
+  font-family: 'Montserrat', sans-serif;
+  font-size: small;
+  color: rgb(252, 250, 248);
+  text-align: center;
+}
+
+#footer-text #repo {
+  
+  font-size: medium;
+}
+
+#body-bg{
+  height : 560px;
+}
+
 
 body {
     font-family: 'Montserrat', sans-serif;
@@ -24,6 +43,7 @@ body {
 .chat_window {
     position: absolute;
     width: calc(100% - 20px);
+    min-width: 500;
     max-width: 1920px;
     height: 500px;
     border-radius: 10px;
@@ -160,6 +180,7 @@ body {
     width: 'none';
     border-radius: 6px;
     margin-top: 20px;
+    margin-bottom: 20px;
     position: 'absolute';
     bottom: 0;
   }

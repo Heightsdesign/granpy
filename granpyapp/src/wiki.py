@@ -41,12 +41,12 @@ class WikiSearcher:
         self.__set_lookup()
         
         try:
-            url = wikipedia.page(self.lookup[0]).url
+            self.my_url = wikipedia.page(self.lookup[0]).url
 
         except wikipedia.exceptions.PageError:
-            url = wikipedia.page(self.lookup[1]).url
+            self.my_url = wikipedia.page(self.lookup[1]).url
 
-        return url
+        return self.my_url
 
 wikisearch = WikiSearcher(geocode_mock_data2)
 print(wikisearch.geolookup())
