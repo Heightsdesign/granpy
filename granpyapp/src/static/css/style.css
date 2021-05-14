@@ -43,7 +43,7 @@ body {
 .chat_window {
     position: absolute;
     width: calc(100% - 20px);
-    min-width: 500;
+    min-width: 500px;
     max-width: 1920px;
     height: 500px;
     border-radius: 10px;
@@ -176,12 +176,10 @@ body {
   }
 
   #map {
-    height: 'none';
-    width: 'none';
     border-radius: 6px;
     margin-top: 20px;
     margin-bottom: 20px;
-    position: 'absolute';
+    position: relative;
     bottom: 0;
   }
   

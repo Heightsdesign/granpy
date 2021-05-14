@@ -10,8 +10,8 @@ from config import NOK_response_sentences as nok_res
 from config import OK_response_sentences as ok_res
 from config import NO_info_response as no_res
 
-class Compiler:
 
+class Compiler:
     def __init__(self, questn):
 
         self.questn = questn
@@ -25,32 +25,31 @@ class Compiler:
 
         if self.location[0] == "OK":
 
-            try: 
+            try:
                 self.wikiresult = WikiSearcher(self.location).geolookup()
                 self.wikiurl = WikiSearcher(self.location).get_url()
 
                 self.finalData = {
-                    'status' : self.location[0],
-                    'lat': self.location[1][0],
-                    'long': self.location[1][1],
-                    'wikiresult' : self.wikiresult,
-                    'wikiurl': self.wikiurl,
-                    'granpyMessage': random.choice(ok_res)
+                    "status": self.location[0],
+                    "lat": self.location[1][0],
+                    "long": self.location[1][1],
+                    "wikiresult": self.wikiresult,
+                    "wikiurl": self.wikiurl,
+                    "granpyMessage": random.choice(ok_res),
                 }
-            
+
             except IndexError:
 
                 self.finalData = {
-                'status' : 'NOK',
-                'warningMessage' : random.choice(no_res)
-            }
+                    "status": "NOK",
+                    "warningMessage": random.choice(no_res),
+                }
 
         else:
 
             self.finalData = {
-                'status' : self.location[0],
-                'warningMessage' : random.choice(nok_res)
+                "status": self.location[0],
+                "warningMessage": random.choice(nok_res),
             }
-
 
         return self.finalData

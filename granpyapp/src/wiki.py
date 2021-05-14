@@ -1,10 +1,12 @@
 """This file handles wikipedia requests and data"""
 
 import wikipedia
+import json
 
 geocode_mock_data = ("OK", [48.85837009999999, 2.2944813])
-geocode_mock_data2 = ('OK', [48.8975156, 2.3833993])
-geocode_mock_data3 = ('OK', [43.94756599999999, 4.53496])
+geocode_mock_data2 = ("OK", [48.8975156, 2.3833993])
+geocode_mock_data3 = ("OK", [43.94756599999999, 4.53496])
+
 
 class WikiSearcher:
     # This handles the wikipedia requests and response
@@ -19,13 +21,15 @@ class WikiSearcher:
         return wikipedia.set_lang("fr")
 
     def __set_lookup(self):
-        
+
         self.__set_language()
-        self.lookup = wikipedia.geosearch(self.data[1][0], self.data[1][1], results=5, radius=2000)
+        self.lookup = wikipedia.geosearch(
+            self.data[1][0], self.data[1][1], results=5, radius=2000
+        )
         return self.lookup
 
     def geolookup(self):
-        
+
         self.__set_lookup()
 
         try:
@@ -39,7 +43,7 @@ class WikiSearcher:
     def get_url(self):
 
         self.__set_lookup()
-        
+
         try:
             self.my_url = wikipedia.page(self.lookup[0]).url
 
@@ -47,6 +51,7 @@ class WikiSearcher:
             self.my_url = wikipedia.page(self.lookup[1]).url
 
         return self.my_url
+
 
 wikisearch = WikiSearcher(geocode_mock_data2)
 print(wikisearch.geolookup())
