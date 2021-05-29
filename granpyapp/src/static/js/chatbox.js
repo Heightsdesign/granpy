@@ -73,6 +73,7 @@
 
                             var newdiv = document.createElement('div');   
                             var message_template = document.getElementsByClassName('message_template')[0];
+
                             newdiv.setAttribute("id", "map");   
 
                             //message_template.insertBefore(newdiv,message_template.lastChild) //OR insert it
@@ -101,19 +102,12 @@
                             var warningMessage = data['warningMessage'];
                             sendMessage(warningMessage, 'left');
                         }
-                    
+                    newdiv.remove()
                     });
                 
                 });
         });
-        /*
-        $('.message_input').keyup(function (e) {
-            if (e.which === 13) {
-                setTimeout (function(){
-                    return sendMessage(getMessageText(), 'right');
-                }, 1000);
-            }
-        });*/
+
         sendMessage("Comme nous disions jadis, bien l'bonjour !", 'left');
         });
 

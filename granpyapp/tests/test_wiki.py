@@ -1,9 +1,6 @@
 """This file contains the unit tests of the wiki file"""
 import wikipedia
-from wikipedia.wikipedia import WikipediaPage
 from src.wiki import WikiSearcher
-from unittest.mock import Mock, MagicMock
-import pytest
 
 
 def test_wiki_geolookup(monkeypatch):
@@ -65,13 +62,19 @@ def test_wiki_geolookup(monkeypatch):
     )
 
 
+class Page:
+    def __init__(self):
+        self.url = "https://fr.wikipedia.org/wiki/Quai_de_la_Gironde"
+        self.title = "title"
+
+
 def test_wiki_get_url(monkeypatch):
 
     token = ("OK", [48.8975156, 2.3833993])
     sut = WikiSearcher(token)
 
     class MockResponseUrl(object):
-        def geosearch():
+        def geosearch(self):
 
             georesponse = [
                 "Quai de la Gironde",
@@ -82,11 +85,8 @@ def test_wiki_get_url(monkeypatch):
             ]
             return georesponse
 
-        class WikipediaPage(self):
-            url = {"https://fr.wikipedia.org/wiki/Quai_de_la_Gironde"}
-
-        def page():
-            return WikipediaPage
+        def page(self):
+            return Page()
 
         def results(self):
 
@@ -94,9 +94,12 @@ def test_wiki_get_url(monkeypatch):
             return result_wiki_url
 
     def mock_get(*url, **kwargs):
-        return MockResponseUrl().results()
+        return MockResponseUrl().geosearch()
+
+    def mock_wikipedia(*url, **kwargs):
+        return MockResponseUrl().page()
 
     monkeypatch.setattr(wikipedia, "geosearch", mock_get)
-    monkeypatch.setattr(wikipedia, "page", mock_get)
+    monkeypatch.setattr(wikipedia, "page", mock_wikipedia)
 
     assert sut.get_url() == "https://fr.wikipedia.org/wiki/Quai_de_la_Gironde"

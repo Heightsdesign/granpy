@@ -50,5 +50,3 @@ def test_get_token():
     token = "tour+eiffel"
     sut = Geocoder(token)
     assert sut.token == "tour+eiffel"
-
-    # faire mock simuler le get , return lat et lng. monkey patch

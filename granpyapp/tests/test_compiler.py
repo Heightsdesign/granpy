@@ -1,5 +1,4 @@
 import src.compiler as compiler
-from compiler import cleaner
 import random
 from src.config import OK_response_sentences as ok_res
 

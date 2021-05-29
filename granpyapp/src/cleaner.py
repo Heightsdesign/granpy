@@ -1,4 +1,4 @@
-"""This file contains the cleaner class uses the input given from 
+"""This file contains the cleaner class uses the input given from
 user and cleans the question, gives back token words"""
 
 from nltk.corpus import stopwords
@@ -48,6 +48,7 @@ class Cleaner:
             self.final_string = self.final_string + word + "+"
 
     def make_final_string(self):
+        # makes the final string to be used in geocode.py
 
         self.__concatenate()
         return self.final_string[:-1]

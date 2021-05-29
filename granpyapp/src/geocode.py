@@ -1,8 +1,7 @@
 """This file contacts the google API and retrieves necessary data
 i.e location"""
-import requests
 
-# from cleaner import testclnr as tcl
+import requests
 
 
 class Geocoder:
@@ -25,6 +24,7 @@ class Geocoder:
 
     def __make_req(self):
         # makes the request, gets the data back in json format
+
         self.r = requests.get(self.__form_req())
 
         if self.r.status_code != 200:
@@ -33,6 +33,8 @@ class Geocoder:
         return self.r.json()
 
     def get_location(self):
+        # gets the location, zips it in
+        # tuple with status
 
         data = self.__make_req()
 

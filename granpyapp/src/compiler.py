@@ -1,17 +1,22 @@
 """This file contains the compiler class used to
 compile the data fetched and formatted into the
 cleaner.py, geocode.py and wiki.py files"""
-
-from cleaner import Cleaner
-from geocode import Geocoder
-from wiki import WikiSearcher
 import random
-from config import NOK_response_sentences as nok_res
-from config import OK_response_sentences as ok_res
-from config import NO_info_response as no_res
+
+from src.cleaner import Cleaner
+from src.geocode import Geocoder
+from src.wiki import WikiSearcher
+from src.config import NOK_response_sentences as nok_res
+from src.config import OK_response_sentences as ok_res
+from src.config import NO_info_response as no_res
 
 
 class Compiler:
+
+    """Compiles all actions cleaner, geocode,
+    and wiki in a single function. Takes the
+    user input question as attribute"""
+
     def __init__(self, questn):
 
         self.questn = questn

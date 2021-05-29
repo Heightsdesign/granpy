@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, jsonify, make_response
-from compiler import Compiler
+from src.compiler import Compiler
 
 
 app = Flask(__name__)
@@ -20,7 +20,3 @@ def ask_question():
     res = make_response(jsonify(data), 200)
 
     return res
-
-
-if __name__ == "__main__":
-    app.run(debug=True)
