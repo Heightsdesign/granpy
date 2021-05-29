@@ -6,6 +6,8 @@ app = Flask(__name__)
 
 
 @app.route("/")
+# Creates application route
+
 def index():
     return render_template("index.html")
 

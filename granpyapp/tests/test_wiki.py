@@ -9,6 +9,8 @@ def test_wiki_geolookup(monkeypatch):
     sut = WikiSearcher(token)
 
     class MockResponseGeosearch(object):
+        # Creates Mock object
+
         def geosearch():
             georesponse = [
                 "Quai de la Gironde",
