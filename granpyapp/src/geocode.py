@@ -2,7 +2,7 @@
 i.e location"""
 
 import requests
-
+import os
 
 class Geocoder:
     # makes a request to google api geocoding to return location
@@ -11,7 +11,7 @@ class Geocoder:
     def __init__(self, token):
 
         self.token = token
-        self.api_key = "AIzaSyCIxX5J017B85kHREmxUrG6blTmkeJFV2c"
+        self.api_key = os.environ.get("GOOGLE_GEOCODING_API_KEY")
         self.url = "https://maps.googleapis.com/maps/api/geocode/json?address="
         self.status = ""
         self.location = []
