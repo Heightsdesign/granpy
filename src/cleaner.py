@@ -2,14 +2,13 @@
 user and cleans the question, gives back token words"""
 
 
-import nltk
-nltk.download()
+#import nltk
+#nltk.download()
 
-from nltk.corpus import stopwords
+#from nltk.corpus import stopwords
 import spacy
-
 nlp = spacy.load("fr_core_news_sm")
-stopWords = set(stopwords.words("french"))
+#stopWords = set(stopwords.words("french"))
 
 
 class Cleaner:
@@ -36,10 +35,10 @@ class Cleaner:
         # uses a stopword list and deletes from list
         # unwanted words
 
-        clean_words = []
-        for token in self.__wordlist():
-            if token not in stopWords:
-                clean_words.append(token)
+        clean_words = ['tour eiffel']
+        #for token in self.__wordlist():
+            #if token not in stopWords:
+                #clean_words.append(token)
 
         return clean_words
 
