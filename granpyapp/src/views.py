@@ -1,9 +1,6 @@
 from flask import Flask, render_template, request, jsonify, make_response
 from src.compiler import Compiler
-
-
-app = Flask(__name__)
-
+from src import app
 
 @app.route("/")
 # Creates application route

@@ -1,1 +1,1 @@
-web: gunicorn granpyapp.src.views:app
+web: gunicorn granpyapp.src:app
