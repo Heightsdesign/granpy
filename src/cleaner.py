@@ -1,6 +1,10 @@
 """This file contains the cleaner class uses the input given from
 user and cleans the question, gives back token words"""
 
+
+import nltk
+nltk.download()
+
 from nltk.corpus import stopwords
 import spacy
 
