@@ -4,6 +4,7 @@ i.e location"""
 import requests
 import os
 
+
 class Geocoder:
     # makes a request to google api geocoding to return location
     # of users interest takes token (Cleaner object) as arg

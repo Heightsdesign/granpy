@@ -9,7 +9,7 @@ def test_compiler():
     token = "Granpy ou se trouve la Tour Eiffel ?"
     sut = compiler.Compiler(token)
 
-    #mocks result
+    # mocks result
     results = {
         "status": "OK",
         "lat": 48.85837009999999,
@@ -23,7 +23,6 @@ def test_compiler():
         "granpyMessage": random.choice(ok_res),
     }
 
-    
     assert sut.compile()["status"] == results["status"]
     assert sut.compile()["lat"] == results["lat"]
     assert sut.compile()["long"] == results["long"]

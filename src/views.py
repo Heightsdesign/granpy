@@ -1,10 +1,9 @@
-from flask import Flask, render_template, request, jsonify, make_response
+from flask import render_template, request, jsonify, make_response
 from src.compiler import Compiler
 from src import app
 
-@app.route("/")
-# Creates application route
 
+@app.route("/")
 def index():
     return render_template("index.html")
 

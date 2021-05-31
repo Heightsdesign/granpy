@@ -51,5 +51,6 @@ class Cleaner:
         self.__concatenate()
         return self.final_string[:-1]
 
+
 sut = Cleaner("Granpy quelle est l'adresse de la Poste?")
 print(sut.make_final_string())

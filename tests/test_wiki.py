@@ -92,7 +92,9 @@ def test_wiki_get_url(monkeypatch):
 
         def results(self):
 
-            result_wiki_url = "https://fr.wikipedia.org/wiki/Quai_de_la_Gironde"
+            result_wiki_url = "https://fr.wikipedia.org/wiki/",
+            "Quai_de_la_Gironde"
+
             return result_wiki_url
 
     def mock_get(*url, **kwargs):
