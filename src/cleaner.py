@@ -1,14 +1,9 @@
 """This file contains the cleaner class uses the input given from
 user and cleans the question, gives back token words"""
 
-
-#import nltk
-#nltk.download()
-
-#from nltk.corpus import stopwords
+from src.stopwords import STOPWORDS
 import spacy
 nlp = spacy.load("fr_core_news_sm")
-#stopWords = set(stopwords.words("french"))
 
 
 class Cleaner:
@@ -35,10 +30,10 @@ class Cleaner:
         # uses a stopword list and deletes from list
         # unwanted words
 
-        clean_words = ['tour eiffel']
-        #for token in self.__wordlist():
-            #if token not in stopWords:
-                #clean_words.append(token)
+        clean_words = []
+        for token in self.__wordlist():
+            if token not in STOPWORDS:
+                clean_words.append(token)
 
         return clean_words
 
@@ -55,3 +50,6 @@ class Cleaner:
 
         self.__concatenate()
         return self.final_string[:-1]
+
+sut = Cleaner("Granpy quelle est l'adresse de la Poste?")
+print(sut.make_final_string())

@@ -21,4 +21,4 @@ def test_compiler():
         "granpyMessage": random.choice(ok_res),
     }
 
-    assert sut == results
+    assert sut.compile() == results
